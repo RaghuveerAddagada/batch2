@@ -1,4 +1,4 @@
-asdfghtyuiO package sample1;
+package sample1;
 
 import driverEngine.BaseClass;
 import org.openqa.selenium.By;

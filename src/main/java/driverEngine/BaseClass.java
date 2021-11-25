@@ -9,14 +9,14 @@ public class BaseClass {
     static WebDriver driver;
 
     public static WebDriver startFirefoxDriver(){
-        //System.setProperty("webdriver.gecko.driver", "/Users/addagadaraghuveer/Documents/workspace/sidekicks/ui-automation/drivers");
         driver = new FirefoxDriver();
         System.out.println("Firefox driver started successfully");
         return driver;
     }
 
     public static WebDriver startChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "/Users/addagadaraghuveer/Documents/workspace/sidekicks/ui-automation/drivers/chromedriver");
+        final String driverPath = System.getProperty("user.dir");
+        System.setProperty("webdriver.chrome.driver", driverPath +"/drivers/chromedriver");
         driver = new ChromeDriver();
         System.out.println("Chrome driver started successfully");
         return driver;
