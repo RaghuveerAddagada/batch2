@@ -3,6 +3,7 @@ package sample1;
 import driverEngine.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class MyntraPage extends BaseClass {
@@ -11,6 +12,7 @@ public class MyntraPage extends BaseClass {
 
     @BeforeClass
     public static void startFirefox(){
+
         driver = startChromeDriver();
     }
 
@@ -23,7 +25,8 @@ public class MyntraPage extends BaseClass {
         driver.findElement(By.xpath("//*[@id=\"desktop-header-cnt\"]/div[2]/nav/div/div[1]/div/a")).click();
         log("Clicked on men category");
 
-        log(driver.getCurrentUrl());
+        log("Asserting the page Url");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.myntra.com/shop/men", "Url Mismatch at mens page");
     }
 
     @AfterClass

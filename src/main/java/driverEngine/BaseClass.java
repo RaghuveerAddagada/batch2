@@ -17,7 +17,13 @@ public class BaseClass {
 
     public static WebDriver startChromeDriver() {
         final String driverPath = System.getProperty("user.dir");
-        System.setProperty("webdriver.chrome.driver", driverPath +"/drivers/chromedriver");
+
+        if (System.getProperty("os.name").startsWith("Mac")) {
+            System.setProperty("webdriver.chrome.driver", driverPath + "/drivers/chromedriver");
+        } else if(System.getProperty("os.name").startsWith("Windows")) {
+            // TODO
+        }
+
         driver = new ChromeDriver();
         log("Chrome driver started successfully");
         return driver;
@@ -25,9 +31,9 @@ public class BaseClass {
 
     /**
      * This method is used to Log messages in std out
-     * @param messageToLog mesage you wanted to log
+     * @param messageToLog message you wanted to log
      */
     public static void log(final String messageToLog) {
-        Reporter.log("Chrome driver started successfully", true);
+        Reporter.log(messageToLog, true);
     }
 }
