@@ -11,6 +11,7 @@ public class MyntraPage extends BaseClass {
 
     @BeforeClass
     public static void startFirefox(){
+
         driver = startChromeDriver();
     }
 
