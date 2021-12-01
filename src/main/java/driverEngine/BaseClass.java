@@ -5,13 +5,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Reporter;
 
+import java.util.concurrent.TimeUnit;
+
 public class BaseClass {
 
-    static WebDriver driver;
+    public static WebDriver driver;
 
     public static WebDriver startFirefoxDriver(){
         driver = new FirefoxDriver();
         log("Firefox driver started successfully");
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         return driver;
     }
 
@@ -26,6 +29,7 @@ public class BaseClass {
 
         driver = new ChromeDriver();
         log("Chrome driver started successfully");
+        driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         return driver;
     }
 
