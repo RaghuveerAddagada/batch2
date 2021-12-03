@@ -1,7 +1,8 @@
 package sample1;
 
 import driverEngine.BaseClass;
-import homepage.HomePageHeaders;
+import abcd.HomePageHeaders;
+import homepage.UseFullLinksInFooter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -11,14 +12,27 @@ public class MyntraPageTests extends BaseClass {
 
      public static WebDriver driver;
 
-     public static HomePageHeaders homePageHeaders;
+     public UseFullLinksInFooter useFullLinksInFooter;
 
     @BeforeClass
     public void startFirefox(){
-
         driver = startFirefoxDriver();
-        homePageHeaders= new HomePageHeaders(driver);
+        useFullLinksInFooter = new UseFullLinksInFooter(driver);
     }
+
+    @Test
+    public void contactUsTest() throws InterruptedException {
+        driver.get("https://www.myntra.com/");
+        log("Myntra page loaded");
+
+        useFullLinksInFooter.clickOnContactUsLink();
+
+        useFullLinksInFooter.clickOnFAQLink();
+
+        Thread.sleep(10000);
+    }
+
+
 
     //@Test
     public void myntraTest1() {
@@ -33,13 +47,6 @@ public class MyntraPageTests extends BaseClass {
         Assert.assertEquals(driver.getCurrentUrl(), "https://www.myntra.com/shop/men", "Url Mismatch at mens page");
     }
 
-    @Test
-    public void frameTest1() throws InterruptedException {
-        driver.get("https://www.myntra.com/");
-        log("Myntra page loaded");
-
-        homePageHeaders.hoverOnMenAndClickOnTShirtsPage();
-    }
 
     @AfterClass
     public void quiteBrowser(){

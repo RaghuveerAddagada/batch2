@@ -1,4 +1,4 @@
-package homepage;
+package abcd;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +17,7 @@ public class HomePageHeaders {
     // TODO Add hover on MEN
     // TODO Add hover on Women
 
-    public void hoverOnMenAndClickOnTShirtsPage() throws InterruptedException {
+    public void hoverOnMen() throws InterruptedException {
 
         WebElement ele = driver.findElement(By.xpath("//*[@id=\"desktop-header-cnt\"]/div[2]/nav/div/div[1]/div/a"));
 
