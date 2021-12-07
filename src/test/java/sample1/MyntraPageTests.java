@@ -1,52 +1,53 @@
 package sample1;
 
 import driverEngine.BaseClass;
-import abcd.HomePageHeaders;
 import homepage.UseFullLinksInFooter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class MyntraPageTests extends BaseClass {
 
      public static WebDriver driver;
-
      public UseFullLinksInFooter useFullLinksInFooter;
 
     @BeforeClass
     public void startFirefox(){
-        driver = startFirefoxDriver();
+        driver = startChromeDriver();
         useFullLinksInFooter = new UseFullLinksInFooter(driver);
     }
 
-    @Test
+    @BeforeMethod
+    public void loadMyntraPageForTest() {
+        driver.get("https://www.myntra.com/");
+        log("---> Myntra page loaded at Before test");
+    }
+
+    @AfterMethod
+    public void afterTestMethod() throws InterruptedException {
+        Thread.sleep(3000);
+        log("---> test completed");
+    }
+
+    @Test()
     public void contactUsTest() throws InterruptedException {
-        driver.get("https://www.myntra.com/");
-        log("Myntra page loaded");
-
         useFullLinksInFooter.clickOnContactUsLink();
+    }
 
+    @Test(priority = 3)
+    public void faqTest() throws InterruptedException {
         useFullLinksInFooter.clickOnFAQLink();
-
-        Thread.sleep(10000);
     }
 
 
-
-    //@Test
-    public void myntraTest1() {
-
-        driver.get("https://www.myntra.com/");
-        log("Myntra page loaded");
-
-        driver.findElement(By.xpath("//*[@id=\"desktop-header-cnt\"]/div[2]/nav/div/div[1]/div/a")).click();
-        log("Clicked on men category");
-
-        log("Asserting the page Url");
-        Assert.assertEquals(driver.getCurrentUrl(), "https://www.myntra.com/shop/men", "Url Mismatch at mens page");
+    @Test(priority = 1)
+    public void careersPageTest() throws InterruptedException {
+        useFullLinksInFooter.clickOnCareers();
     }
 
+    @Test(priority = 2)
+    public void whiteHatPageTest() throws InterruptedException {
+        useFullLinksInFooter.clickOnWhiteHat();
+    }
 
     @AfterClass
     public void quiteBrowser(){
