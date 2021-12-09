@@ -11,7 +11,7 @@ public class MyntraPageTests extends BaseClass {
      public UseFullLinksInFooter useFullLinksInFooter;
 
     @BeforeClass
-    public void startFirefox(){
+    public void startBrowser(){
         driver = startChromeDriver();
         useFullLinksInFooter = new UseFullLinksInFooter(driver);
     }
