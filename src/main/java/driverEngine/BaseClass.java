@@ -7,6 +7,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Reporter;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class BaseClass {
@@ -56,5 +61,27 @@ public class BaseClass {
         Actions a = new Actions(driver);
         a.moveToElement(element);
         a.perform();
+    }
+
+    private Properties readPropertyFile(final String fileName) {
+        Properties properties = new Properties();
+        try {
+            InputStream inputStream = new FileInputStream(fileName);
+            properties.load(inputStream);
+            inputStream.close();
+        } catch (FileNotFoundException e) {
+            log(e.getMessage());
+        } catch (IOException e) {
+            log(e.getMessage());
+        }
+        return properties;
+    }
+
+    public Properties readLocators() {
+        return readPropertyFile("locators.properties");
+    }
+
+    public Properties readCredentials() {
+        return readPropertyFile("credentials.properties");
     }
 }

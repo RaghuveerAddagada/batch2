@@ -1,6 +1,8 @@
 # Compiled class file
 *.class
 target/
+test-output/
+credentials.properties
 
 .idea/
 

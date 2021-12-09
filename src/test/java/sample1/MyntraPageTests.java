@@ -29,7 +29,7 @@ public class MyntraPageTests extends BaseClass {
     }
 
     @Test()
-    public void contactUsTest() throws InterruptedException {
+    public void contactUsTest() {
         useFullLinksInFooter.clickOnContactUsLink();
     }
 
@@ -54,5 +54,4 @@ public class MyntraPageTests extends BaseClass {
         driver.quit();
         log("Browser closed .. Bye bye");
     }
-
 }
