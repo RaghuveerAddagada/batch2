@@ -34,18 +34,18 @@ public class MyntraPageTests extends BaseClass {
     }
 
     @Test(priority = 3)
-    public void faqTest() throws InterruptedException {
+    public void faqTest() {
         useFullLinksInFooter.clickOnFAQLink();
     }
 
 
     @Test(priority = 1)
-    public void careersPageTest() throws InterruptedException {
+    public void careersPageTest() {
         useFullLinksInFooter.clickOnCareers();
     }
 
     @Test(priority = 2)
-    public void whiteHatPageTest() throws InterruptedException {
+    public void whiteHatPageTest() {
         useFullLinksInFooter.clickOnWhiteHat();
     }
 
