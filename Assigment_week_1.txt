@@ -1,0 +1,13 @@
+1. Fix Driver path issue based OS
+2. Write tests to Open Myntra Pages One by one.
+
+Example. 1. Open Browser,
+         2.Open Myntra
+         3..wait for 5 seconds.
+         4.click on Men.
+         5.get Url after going to Men page.
+         6.And Assert the Url Having men or not.
+         7.Close the browser
+
+
+2. similar to above Do for Women, KIDs Page
