@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 import java.io.FileInputStream;
@@ -18,10 +19,11 @@ public class BaseClass {
 
     public static WebDriver driver;
 
+
     public static WebDriver startFirefoxDriver() {
         driver = new FirefoxDriver();
         log("Firefox driver started successfully");
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
         return driver;
     }
 
@@ -36,7 +38,7 @@ public class BaseClass {
 
         driver = new ChromeDriver();
         log("Chrome driver started successfully");
-        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15,TimeUnit.SECONDS);
         driver.manage().window().maximize();
         return driver;
     }

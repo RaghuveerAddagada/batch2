@@ -4,9 +4,12 @@ import driverEngine.BaseClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 public class UseFullLinksInFooter {
 
@@ -46,7 +49,8 @@ public class UseFullLinksInFooter {
     }
 
     public void clickOnWhiteHat() {
-        WebElement element = driver.findElement(By.xpath(locators.getProperty("xpath_Whitehat")));
+        WebDriverWait wait = new WebDriverWait(driver, 20);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locators.getProperty("xpath_Whitehat"))));
         webDriverBase.scrollToElement(element);
         webDriverBase.clickOnElement(element);
         Reporter.log("clicked on WhiteHat link", true);
