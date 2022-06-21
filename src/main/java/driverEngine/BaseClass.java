@@ -1,19 +1,20 @@
 package driverEngine;
 
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -89,6 +90,25 @@ public class BaseClass {
             log(e.getMessage());
         }
         return properties;
+    }
+
+    public void getScreenShot(ITestResult result) {
+
+        // To create reference of TakesScreenshot
+        TakesScreenshot screenshot = (TakesScreenshot) driver;
+
+        // Call method to capture screenshot
+        File source = screenshot.getScreenshotAs(OutputType.FILE);
+
+        // Copy method  specific location here it will save all screenshot in our project home directory and
+        // result.getName() will return name of test case so that screenshot name will be same
+        try {
+            String desktopPath = System.getProperty("user.home") + "/Desktop";
+            FileHandler.copy(source, new File(desktopPath + "/" + result.getName() + ".png"));
+            System.out.println("Screenshot taken");
+        } catch (Exception e) {
+            System.out.println("Exception while taking screenshot " + e.getMessage());
+        }
     }
 
     public Properties readLocators() {

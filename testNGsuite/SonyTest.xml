@@ -1,0 +1,7 @@
+<suite name="Sony PS4 Games Price check">
+    <test name="check latest games prices">
+        <classes>
+            <class name="sample1.SonyTest"/>
+        </classes>
+    </test>
+</suite>
