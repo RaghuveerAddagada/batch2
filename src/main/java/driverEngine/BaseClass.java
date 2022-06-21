@@ -37,6 +37,8 @@ public class BaseClass {
             System.setProperty("webdriver.chrome.driver", driverPath + "/drivers/chromedriver");
         } else if (System.getProperty("os.name").startsWith("Windows")) {
             // TODO
+        } else {
+            System.setProperty("webdriver.chrome.driver", driverPath + "/drivers/chromedriver_linux");
         }
 
         ChromeOptions options = new ChromeOptions();
